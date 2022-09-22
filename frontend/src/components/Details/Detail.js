@@ -9,6 +9,9 @@ const Detail = () => {
     const params = useParams();
     const { dataVal, loading, error } = useFetch(`/hotel/show/${params.id}`);
 
+    //state for changing the images in details sectionn
+    const [imagex, setimage] = useState('http://perfectturf.com/wp-content/uploads/2022/02/Photo-Placeholder-800x800-1.png')
+
 
     const { dates, options } = useContext(searchContext)
 
@@ -28,6 +31,10 @@ const Detail = () => {
         return result
     }
 
+    function changeImg(imgUrl) {
+        setimage(imgUrl)
+    }
+
 
     return (
         <>
@@ -36,14 +43,14 @@ const Detail = () => {
                     <div className="detailsWrapper">
                         <div className="row">
                             <div className="col-sm-12 col-md-6">
-                                <img src="https://source.unsplash.com/ufFIweqSPd4/800x800" id="main" className='mainImg w-100' />
+                                <img src={`${imagex}`} id="main" className='mainImg w-100' />
                                 <div className="detailThumbnails d-flex">
-                                    <img src="https://source.unsplash.com/ufFIweqSPd4/800x800" />
-                                    <img src="https://source.unsplash.com/O0uCm1WLnA0/800x800" />
-                                    <img src="https://source.unsplash.com/pV5ckb2HEVk/800x800" />
-                                    <img src="https://source.unsplash.com/j9QEFAQqaXc/800x800" />
-                                    <img src="https://source.unsplash.com/EXkbaeN05lY/800x800" />
-                                    <img src="https://source.unsplash.com/B2mq60Ksrsg/800x800" />
+                                    <img src="https://source.unsplash.com/ufFIweqSPd4/800x800" onClick={() => { changeImg('https://source.unsplash.com/ufFIweqSPd4/800x800') }} />
+                                    <img src="https://source.unsplash.com/O0uCm1WLnA0/800x800" onClick={() => { changeImg('https://source.unsplash.com/O0uCm1WLnA0/800x800') }} />
+                                    <img src="https://source.unsplash.com/pV5ckb2HEVk/800x800" onClick={() => { changeImg('https://source.unsplash.com/pV5ckb2HEVk/800x800') }} />
+                                    <img src="https://source.unsplash.com/j9QEFAQqaXc/800x800" onClick={() => { changeImg('https://source.unsplash.com/j9QEFAQqaXc/800x800') }} />
+                                    <img src="https://source.unsplash.com/EXkbaeN05lY/800x800" onClick={() => { changeImg('https://source.unsplash.com/EXkbaeN05lY/800x800') }} />
+                                    <img src="https://source.unsplash.com/B2mq60Ksrsg/800x800" onClick={() => { changeImg('https://source.unsplash.com/B2mq60Ksrsg/800x800') }} />
                                 </div>
                             </div>
                             <div className="col-sm-12 col-md-6">
