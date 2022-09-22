@@ -11,8 +11,6 @@ const Detail = () => {
 
 
     const { dates, options } = useContext(searchContext)
-    console.log(searchContext)
-    console.log(JSON.stringify(dates) + ' is date' + JSON.stringify(options) + 'in deails');
 
     const srtDate = dates[0].startDate;
     const endDate = dates[0].endDate;
@@ -91,19 +89,19 @@ const Detail = () => {
 
                                         <ul class="list-group list-group-horizontal">
                                             <li class="list-group-item w-100">Number of Rooms</li>
-                                            <li class="list-group-item w-100"><b></b></li>
+                                            <li class="list-group-item w-100"><b>{options.room}</b></li>
                                         </ul>
 
 
                                         <ul class="list-group list-group-horizontal">
-                                            <li class="list-group-item w-100">Number of Rooms</li>
+                                            <li class="list-group-item w-100">Number of Days</li>
                                             <li class="list-group-item w-100"><b>{dateNumber} days</b></li>
                                         </ul>
 
 
                                         <ul class="list-group list-group-horizontal">
                                             <li class="list-group-item w-100"><b>Total Amount</b></li>
-                                            <li class="list-group-item w-100"><b> $</b></li>
+                                            <li class="list-group-item w-100"><b>{dataVal.cheapestPrice * dateNumber * options.room} $</b></li>
                                         </ul>
 
                                     </div>

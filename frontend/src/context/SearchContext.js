@@ -1,5 +1,5 @@
 import { createContext, useReducer } from 'react'
-const INITIAL_STATE = {
+const INITIAL_STATE = JSON.parse(localStorage.getItem('searchData')) || {
     city: '',
     dates: [],
     options: {
@@ -14,7 +14,7 @@ const SearchReducer = (state, action) => {
 
     switch (action.type) {
         case 'NEW_SEARCH':
-            console.log(JSON.stringify(action.payload) + " is the state from searchContext")
+            localStorage.setItem('searchData', JSON.stringify(action.payload))
             return (
                 {
                     city: action.payload.destination,

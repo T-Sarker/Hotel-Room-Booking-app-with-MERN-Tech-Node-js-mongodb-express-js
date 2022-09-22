@@ -7,7 +7,8 @@ import useFetch from '../../hooks/typeFetchAPI'
 import { searchContext } from '../../context/SearchContext'
 const Hotels = () => {
     const location = useLocation()
-    console.log(location)
+    const { city, dates, options, dispatch } = useContext(searchContext)
+
     const [Sdestination, setDestination] = useState(location.state.destination)
 
     const [date, setDate] = useState(location.state.date)
@@ -17,7 +18,6 @@ const Hotels = () => {
     //getting the min max value
     const [min, setMin] = useState(null)
     const [max, setMax] = useState(null)
-
 
     const { dataVal, loading, error, reFetchData } = useFetch(`/hotel/all?city=${Sdestination}&hmin=${min}&hmax=${max}&limit=10`)
 
@@ -44,7 +44,12 @@ const Hotels = () => {
         })
     }
     const searchHandel = (e) => {
-
+        const payload = {
+            city: Sdestination,
+            dates: date,
+            options: optionsx
+        }
+        dispatch({ type: "NEW_SEARCH", payload: payload });
         reFetchData()
     }
     return (
@@ -153,7 +158,7 @@ const Hotels = () => {
                                                     <div className="row">
                                                         <div className="col-8">
                                                             <div className="detailsBox overflow-hidden" >
-                                                                <p className="card-text">{item.desc}</p>
+                                                                <p className="card-text">{item.desc.substring(0, 100)}...</p>
                                                                 {/* <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> */}
                                                             </div>
                                                         </div>
