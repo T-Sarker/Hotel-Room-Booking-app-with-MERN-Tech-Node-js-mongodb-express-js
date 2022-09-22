@@ -1,0 +1,10 @@
+.detailsBox{
+    height:80px;
+}
+.bg-darkBlue {
+    background-color: #dc3545!important;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}

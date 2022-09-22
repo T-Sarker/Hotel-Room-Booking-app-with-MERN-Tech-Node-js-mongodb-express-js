@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.Header {
+  background-color: #dc3545;
+}
+.topHeader .userBar{
+  margin-left: auto;
+  text-decoration: none;
+  color:#fff;
+}
+.userBar a{
+  color:#fff;
+}
+
+.mainNavbar .navbar-nav{
+  align-items: center;
+  color:#fff;
+}
+.mainNavbar .navbar-nav .nav-item .nav-link{
+  color:#fff;
+}
+.mainNavbar .navbar-nav .nav-item{
+  border: 2px solid transparent;
+
+}
+.mainNavbar .navbar-nav .nav-item:hover{
+  border: 2px solid yellow;
+  border-radius: 50rem;
+}
+
+.heroBanner{
+  background-color: #dc3545;
+}
+
+.heroBanner h2, .heroBanner p {
+  color: #fff;
+}
+.heroBanner button {
+  padding: 3px 20px 3px 10px;
+}
+.searchbar {
+  width: 50%;
+  margin: 0 auto;
+}
+.searchbox {
+  margin-top: -30px;
+}
+
+.searchboxItem {
+  width: 100%;
+  height: 50px;
+}
+
+.searchboxItem .rounded-pill{
+  height: 100%;
+  border: 1px solid rgb(0, 255, 123); 
+} 
+.optionItem {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+.optionTitle{
+  width: 30%;
+}
+.numBoxWraper {
+  position: absolute;
+  margin-top: 15px;
+  background-color: #fff;
+  z-index: 10;
+  padding: 5px
+}
+
+/* city property count css */
+.countDetails {
+  position: absolute;
+  bottom: 0;
+  padding: 0px 30px;
+  color: #fff;
+}
+
+.newsletterArea{
+  background-color: #dc3545;
+  padding: 20px;
+}
+
+
+/* over-writting the default css value of the date calender option */
+.rdrCalendarWrapper {
+  color: #000000;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.rdrMonthsVertical {
+  flex-direction: unset!important;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}

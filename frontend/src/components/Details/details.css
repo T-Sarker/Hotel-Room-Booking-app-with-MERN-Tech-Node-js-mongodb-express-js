@@ -1,0 +1,19 @@
+.detailTypeTag{
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.detailThumbnails {
+    width: 100%;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.detailThumbnails img{
+    width: 100px;
+}
+
+.reviews{
+    margin-top: 50px;
+}
