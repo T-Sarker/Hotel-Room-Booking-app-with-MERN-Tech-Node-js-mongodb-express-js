@@ -1,25 +1,39 @@
 import React, { useContext, useEffect, useState } from 'react'
 import useFetch from '../../hooks/typeFetchAPI'
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import './details.css'
 import { searchContext } from '../../context/SearchContext';
+import BookingDetails from './BookingDetails';
 
 const Detail = () => {
 
     const params = useParams();
     const { dataVal, loading, error } = useFetch(`/hotel/show/${params.id}`);
 
+    //dateNumber is for holding the range between two dates
+    const [dateCount, setDateCount] = useState(0)
+
     //state for changing the images in details sectionn
     const [imagex, setimage] = useState('http://perfectturf.com/wp-content/uploads/2022/02/Photo-Placeholder-800x800-1.png')
 
 
     const { dates, options } = useContext(searchContext)
+    useEffect(() => {
+        console.log(dates.length)
+        if (dates.length > 0) {
 
-    const srtDate = dates[0].startDate;
-    const endDate = dates[0].endDate;
+            const srtDate = dates[0].startDate;
+            const endDate = dates[0].endDate;
 
-    // console.log(srtDate + " is the dates" + endDate)
-    const dateNumber = dateConverter(srtDate, endDate)
+            console.log(srtDate + " is the dates" + endDate)
+            const dateNumber = dateConverter(srtDate, endDate)
+
+            setDateCount(dateNumber)
+
+
+        }
+
+    }, [])
 
     function dateConverter(startDate, timeEnd) {
         const newStartDate = new Date(startDate);
@@ -85,31 +99,31 @@ const Detail = () => {
 
 
                                 <div className='mt-5'>
-                                    <h5>Perfect for  <b>{dateNumber}</b> Nights</h5>
+                                    <h5>Perfect for  <b>{dateCount}</b> Nights</h5>
                                     <div className="w-100">
 
-                                        <ul class="list-group list-group-horizontal">
-                                            <li class="list-group-item w-100">Per Night</li>
-                                            <li class="list-group-item w-100"><b>{dataVal.cheapestPrice}</b></li>
+                                        <ul className="list-group list-group-horizontal">
+                                            <li className="list-group-item w-100">Per Night</li>
+                                            <li className="list-group-item w-100"><b>{dataVal.cheapestPrice}</b></li>
                                         </ul>
 
 
-                                        <ul class="list-group list-group-horizontal">
-                                            <li class="list-group-item w-100">Number of Rooms</li>
-                                            <li class="list-group-item w-100"><b>{options.room}</b></li>
+                                        <ul className="list-group list-group-horizontal">
+                                            <li className="list-group-item w-100">Number of Rooms</li>
+                                            <li className="list-group-item w-100"><b>{options.room}</b></li>
                                         </ul>
 
 
-                                        <ul class="list-group list-group-horizontal">
-                                            <li class="list-group-item w-100">Number of Days</li>
-                                            <li class="list-group-item w-100"><b>{dateNumber} days</b></li>
+                                        <ul className="list-group list-group-horizontal">
+                                            <li className="list-group-item w-100">Number of Days</li>
+                                            <li className="list-group-item w-100"><b>{dateCount} days</b> {dateCount === 0 && <small className='text-warning fw-semibold'>[Choose Booking Dates]</small>} </li>
                                         </ul>
 
 
-                                        <ul class="list-group list-group-horizontal">
-                                            <li class="list-group-item w-100"><b>Total Amount</b></li>
-                                            <li class="list-group-item w-100"><b>{dataVal.cheapestPrice * dateNumber * options.room} $</b></li>
-                                        </ul>
+                                        {dateCount !== 0 && <ul className="list-group list-group-horizontal">
+                                            <li className="list-group-item w-100"><b>Total Amount</b></li>
+                                            <li className="list-group-item w-100"><b>{dataVal.cheapestPrice * dateCount * options.room} $</b></li>
+                                        </ul>}
 
                                     </div>
                                 </div>
@@ -145,6 +159,7 @@ const Detail = () => {
                 </>
                 }
             </div>
+            <BookingDetails />
         </>
     )
 }

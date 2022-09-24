@@ -16,7 +16,7 @@ const HomeCountByType = () => {
                             dataVal.map((data) => {
                                 return (<>
                                     <div className="col-xs-12 col-sm-6 col-md-2 shadow-sm my-4" key={data.type}>
-                                        <div className="cityItem position-relative" key={data.type}>
+                                        <div className="cityItem position-relative">
                                             <img className='rounded  w-100' alt='gg' src="https://wallup.net/wp-content/uploads/2017/11/22/366189-city-street-Manhattan-New_York_City-748x509.jpg" />
                                             <h5 className='my-2'>{data.type}</h5>
                                             <h6 className='my-2'>{data.count} propertie</h6>

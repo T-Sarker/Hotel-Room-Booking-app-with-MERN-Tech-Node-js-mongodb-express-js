@@ -70,6 +70,7 @@ const HomeSearchBar = () => {
             dates: date,
             options: optionValue
         }
+
         dispatch({ type: "NEW_SEARCH", payload: payload });
         navigate('/hotel', { state: { destination, date, optionValue } })
     }

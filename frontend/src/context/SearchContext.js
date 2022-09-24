@@ -8,18 +8,21 @@ const INITIAL_STATE = JSON.parse(localStorage.getItem('searchData')) || {
         room: 1
     }
 }
+
 export const searchContext = createContext(INITIAL_STATE)
 
 const SearchReducer = (state, action) => {
 
     switch (action.type) {
         case 'NEW_SEARCH':
+
+
             localStorage.setItem('searchData', JSON.stringify(action.payload))
             return (
                 {
-                    city: action.payload.destination,
+                    city: action.payload.city,
                     dates: action.payload.dates,
-                    options: action.payload.optionValue
+                    options: action.payload.options
                 });
         case "SEARCH_RESET":
             return INITIAL_STATE
