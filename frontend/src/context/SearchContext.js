@@ -16,7 +16,6 @@ const SearchReducer = (state, action) => {
     switch (action.type) {
         case 'NEW_SEARCH':
 
-
             localStorage.setItem('searchData', JSON.stringify(action.payload))
             return (
                 {

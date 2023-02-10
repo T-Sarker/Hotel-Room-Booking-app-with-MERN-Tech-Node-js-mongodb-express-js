@@ -40,13 +40,13 @@ const Navbar = () => {
 
               <NavLink className="btn btn-outline-dark mx-2 text-uppercase" to='/Login'><FaUserTie /> Login</NavLink></>)
               :
-              (<><div class="dropdown mr-3">
-                <button class="btn btn-outline-dark mx-2 text-uppercase text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              (<><div className="dropdown mr-3">
+                <button className="btn btn-outline-dark mx-2 text-uppercase text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <FaUserTie /> {user != null ? user.username : ''}
                 </button>
-                <ul class="dropdown-menu bg-dark">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><a class="dropdown-item" onClick={handelLogout}>Logout</a></li>
+                <ul className="dropdown-menu bg-dark">
+                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" onClick={handelLogout}>Logout</a></li>
                 </ul>
               </div></>)}
 

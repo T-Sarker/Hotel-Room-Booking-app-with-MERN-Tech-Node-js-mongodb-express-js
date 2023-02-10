@@ -10,6 +10,7 @@ const Detail = () => {
     const params = useParams();
     const { dataVal, loading, error } = useFetch(`/hotel/show/${params.id}`);
 
+
     //dateNumber is for holding the range between two dates
     const [dateCount, setDateCount] = useState(0)
 
@@ -19,13 +20,13 @@ const Detail = () => {
 
     const { dates, options } = useContext(searchContext)
     useEffect(() => {
-        console.log(dates.length)
+
         if (dates.length > 0) {
 
             const srtDate = dates[0].startDate;
             const endDate = dates[0].endDate;
 
-            console.log(srtDate + " is the dates" + endDate)
+            // console.log(srtDate + " is the dates" + endDate)
             const dateNumber = dateConverter(srtDate, endDate)
 
             setDateCount(dateNumber)
@@ -129,7 +130,21 @@ const Detail = () => {
                                 </div>
 
                                 <div className="d-flex justify-content-center">
-                                    <button type='button' className='btn btn-lg btn-primary w-100 mt-5'>BOOK NOW</button>
+
+                                    {dates.length === 0 ? <button type='button' className='btn btn-lg btn-primary w-100 mt-5' data-bs-toggle="modal" data-bs-target="#alertModal">BOOK NOW</button> : <button type='button' className='btn btn-lg btn-primary w-100 mt-5' data-bs-toggle="modal" data-bs-target="#bookingModal">BOOK NOW</button>}
+                                </div>
+                                <div className="modal" id='alertModal' tabIndex="-1">
+                                    <div className="modal-dialog">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <p className='text-titlecase'>To book room(s), please Select <b>Destination</b> and <b>Dates</b> from the <b className='text-danger'>Home Page</b></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -159,7 +174,7 @@ const Detail = () => {
                 </>
                 }
             </div>
-            <BookingDetails />
+            <BookingDetails data={dataVal} />
         </>
     )
 }
